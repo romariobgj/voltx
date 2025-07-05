@@ -29,8 +29,10 @@
     <section class="mt-20 py-16">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div>
-                    <img id="product-image" src="https://via.placeholder.com/500x500" alt="iPhone" class="w-full rounded-lg shadow-lg">
+                <div class="relative">
+                    <img id="product-image" src="https://via.placeholder.com/500x500" alt="iPhone" class="w-full rounded-lg shadow-lg object-cover">
+                    <button id="prev-image" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-green-600 text-white p-2 rounded-full hover:bg-green-700 transition">←</button>
+                    <button id="next-image" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-green-600 text-white p-2 rounded-full hover:bg-green-700 transition">→</button>
                 </div>
                 <div>
                     <h1 id="product-name" class="text-3xl font-bold mb-4">Carregando...</h1>
@@ -94,42 +96,45 @@
                 name: 'iPhone 14 Pro Max',
                 price: 8499,
                 description: 'O iPhone 14 Pro Max oferece desempenho incomparável com o chip A16 Bionic, tela Super Retina XDR de 6,7 polegadas e um sistema de câmeras avançado com sensor de 48 MP. Perfeito para quem busca o melhor da tecnologia.',
-                image: 'https://via.placeholder.com/500x500?text=iPhone+14+Pro+Max'
+                images: [
+                    'https://dcdn-us.mitiendanube.com/stores/003/635/363/products/7a2e25a39680c01f6595d1065ffec832-94e8f82d41db9702e417083860174690-1024-1024.webp',
+                    'https://dcdn-us.mitiendanube.com/stores/003/635/363/products/7a2e25a39680c01f6595d1065ffec832-94e8f82d41db9702e417083860174690-1024-1024.webp'
+                ]
             },
             {
                 id: 'iphone-14',
                 name: 'iPhone 14',
                 price: 6999,
                 description: 'O iPhone 14 combina design elegante com o chip A15 Bionic, tela OLED de 6,1 polegadas e câmeras duplas de 12 MP. Ideal para quem quer desempenho e estilo.',
-                image: 'https://via.placeholder.com/500x500?text=iPhone+14'
+                images: ['https://via.placeholder.com/500x500?text=iPhone+14']
             },
             {
                 id: 'iphone-13-pro',
                 name: 'iPhone 13 Pro',
                 price: 6499,
                 description: 'O iPhone 13 Pro traz o chip A15 Bionic, tela ProMotion de 6,1 polegadas e um sistema de câmeras Pro com modo cinematográfico. Excelente para criadores de conteúdo.',
-                image: 'https://via.placeholder.com/500x500?text=iPhone+13+Pro'
+                images: ['https://via.placeholder.com/500x500?text=iPhone+13+Pro']
             },
             {
                 id: 'iphone-13',
                 name: 'iPhone 13',
                 price: 5499,
                 description: 'O iPhone 13 oferece o chip A15 Bionic, tela Super Retina XDR de 6,1 polegadas e câmeras duplas com modo noturno. Perfeito para o dia a dia.',
-                image: 'https://via.placeholder.com/500x500?text=iPhone+13'
+                images: ['https://via.placeholder.com/500x500?text=iPhone+13']
             },
             {
                 id: 'iphone-12',
                 name: 'iPhone 12',
                 price: 4499,
                 description: 'O iPhone 12 tem chip A14 Bionic, tela OLED de 6,1 polegadas e suporte a 5G. Um equilíbrio perfeito entre preço e performance.',
-                image: 'https://via.placeholder.com/500x500?text=iPhone+12'
+                images: ['https://via.placeholder.com/500x500?text=iPhone+12']
             },
             {
                 id: 'iphone-11',
                 name: 'iPhone 11',
                 price: 3499,
                 description: 'O iPhone 11 conta com chip A13 Bionic, tela Liquid Retina de 6,1 polegadas e câmeras duplas. Ótima escolha para quem busca custo-benefício.',
-                image: 'https://via.placeholder.com/500x500?text=iPhone+11'
+                images: ['https://via.placeholder.com/500x500?text=iPhone+11']
             }
         ];
 
@@ -138,19 +143,54 @@
         const productId = urlParams.get('id');
         const product = products.find(p => p.id === productId);
 
+        // Carrossel de imagens
+        let currentImageIndex = 0;
+
+        function updateProductImage() {
+            if (product && product.images.length > 0) {
+                document.getElementById('product-image').src = product.images[currentImageIndex];
+                document.getElementById('product-image').alt = product.name;
+            }
+        }
+
+        function showNextImage() {
+            if (product && product.images.length > 0) {
+                currentImageIndex = (currentImageIndex + 1) % product.images.length;
+                updateProductImage();
+            }
+        }
+
+        function showPrevImage() {
+            if (product && product.images.length > 0) {
+                currentImageIndex = (currentImageIndex - 1 + product.images.length) % product.images.length;
+                updateProductImage();
+            }
+        }
+
         // Atualizar a página com os detalhes do produto
         if (product) {
             document.getElementById('product-name').textContent = product.name;
             document.getElementById('product-price').textContent = `A partir de R$ ${product.price}`;
             document.getElementById('product-description').textContent = product.description;
-            document.getElementById('product-image').src = product.image;
-            document.getElementById('product-image').alt = product.name;
+            updateProductImage();
             document.getElementById('add-to-cart').onclick = () => addToCart(product.name, product.price);
+
+            // Adicionar eventos aos botões de navegação
+            document.getElementById('next-image').onclick = showNextImage;
+            document.getElementById('prev-image').onclick = showPrevImage;
+
+            // Esconder botões se houver apenas uma imagem
+            if (product.images.length <= 1) {
+                document.getElementById('next-image').style.display = 'none';
+                document.getElementById('prev-image').style.display = 'none';
+            }
         } else {
             document.getElementById('product-name').textContent = 'Produto não encontrado';
             document.getElementById('product-price').textContent = '';
             document.getElementById('product-description').textContent = 'Desculpe, o produto solicitado não está disponível.';
             document.getElementById('add-to-cart').style.display = 'none';
+            document.getElementById('next-image').style.display = 'none';
+            document.getElementById('prev-image').style.display = 'none';
         }
 
         // Lógica do carrinho
