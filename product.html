@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produto - iPhonePro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 font-inter">
+    <!-- Header -->
+    <header class="fixed top-0 w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="index.html" class="text-2xl font-bold text-gray-900">iPhonePro</a>
+            <div class="w-1/3">
+                <input type="text" placeholder="Buscar iPhone..." class="w-full px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="text-gray-700 cursor-pointer">👤 Login</span>
+                <div class="relative cursor-pointer" onclick="toggleCart()">
+                    <span class="text-2xl">🛒</span>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-green-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Product Details -->
+    <section class="mt-20 py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <img id="product-image" src="https://via.placeholder.com/500x500" alt="iPhone" class="w-full rounded-lg shadow-lg">
+                </div>
+                <div>
+                    <h1 id="product-name" class="text-3xl font-bold mb-4">Carregando...</h1>
+                    <p id="product-price" class="text-2xl text-gray-600 mb-4">Carregando...</p>
+                    <p id="product-description" class="text-gray-700 mb-6">Carregando...</p>
+                    <button id="add-to-cart" class="bg-yellow-400 text-gray-900 px-6 py-3 rounded-lg hover:bg-yellow-500 transition">Comprar</button>
+                    <a href="index.html" class="ml-4 text-green-600 hover:underline">Voltar para a loja</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed top-0 right-0 w-full md:w-96 h-full bg-white shadow-xl transform translate-x-full transition-transform duration-300">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Carrinho</h2>
+                <button onclick="toggleCart()" class="text-gray-600 hover:text-gray-900">Fechar</button>
+            </div>
+            <div id="cart-items" class="space-y-4"></div>
+            <p id="cart-total" class="text-lg font-semibold mt-6">Total: R$ 0</p>
+            <a href="https://checkout.vegaspay.app" class="block mt-4 bg-green-600 text-white text-center px-6 py-3 rounded-lg hover:bg-green-700 transition">Continuar</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Sobre a loja</h3>
+                    <p>Somos a iPhonePro, sua loja de confiança para iPhones no Brasil. Entrega rápida e qualidade garantida!</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Ajuda ao cliente</h3>
+                    <ul class="space-y-2">
+                        <li><a href="faq.html" class="hover:text-yellow-400">FAQ</a></li>
+                        <li><a href="contato.html" class="hover:text-yellow-400">Contato</a></li>
+                        <li><a href="trocas.html" class="hover:text-yellow-400">Trocas e Devoluções</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Redes sociais</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-yellow-400 hover:text-yellow-500">Instagram</a>
+                        <a href="#" class="text-yellow-400 hover:text-yellow-500">Facebook</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <p>© 2025 iPhonePro. Todos os direitos reservados – Brasil 🇧🇷</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dados dos produtos
+        const products = [
+            {
+                id: 'iphone-14-pro-max',
+                name: 'iPhone 14 Pro Max',
+                price: 8499,
+                description: 'O iPhone 14 Pro Max oferece desempenho incomparável com o chip A16 Bionic, tela Super Retina XDR de 6,7 polegadas e um sistema de câmeras avançado com sensor de 48 MP. Perfeito para quem busca o melhor da tecnologia.',
+                image: 'https://via.placeholder.com/500x500?text=iPhone+14+Pro+Max'
+            },
+            {
+                id: 'iphone-14',
+                name: 'iPhone 14',
+                price: 6999,
+                description: 'O iPhone 14 combina design elegante com o chip A15 Bionic, tela OLED de 6,1 polegadas e câmeras duplas de 12 MP. Ideal para quem quer desempenho e estilo.',
+                image: 'https://via.placeholder.com/500x500?text=iPhone+14'
+            },
+            {
+                id: 'iphone-13-pro',
+                name: 'iPhone 13 Pro',
+                price: 6499,
+                description: 'O iPhone 13 Pro traz o chip A15 Bionic, tela ProMotion de 6,1 polegadas e um sistema de câmeras Pro com modo cinematográfico. Excelente para criadores de conteúdo.',
+                image: 'https://via.placeholder.com/500x500?text=iPhone+13+Pro'
+            },
+            {
+                id: 'iphone-13',
+                name: 'iPhone 13',
+                price: 5499,
+                description: 'O iPhone 13 oferece o chip A15 Bionic, tela Super Retina XDR de 6,1 polegadas e câmeras duplas com modo noturno. Perfeito para o dia a dia.',
+                image: 'https://via.placeholder.com/500x500?text=iPhone+13'
+            },
+            {
+                id: 'iphone-12',
+                name: 'iPhone 12',
+                price: 4499,
+                description: 'O iPhone 12 tem chip A14 Bionic, tela OLED de 6,1 polegadas e suporte a 5G. Um equilíbrio perfeito entre preço e performance.',
+                image: 'https://via.placeholder.com/500x500?text=iPhone+12'
+            },
+            {
+                id: 'iphone-11',
+                name: 'iPhone 11',
+                price: 3499,
+                description: 'O iPhone 11 conta com chip A13 Bionic, tela Liquid Retina de 6,1 polegadas e câmeras duplas. Ótima escolha para quem busca custo-benefício.',
+                image: 'https://via.placeholder.com/500x500?text=iPhone+11'
+            }
+        ];
+
+        // Obter o ID do produto da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+        const product = products.find(p => p.id === productId);
+
+        // Atualizar a página com os detalhes do produto
+        if (product) {
+            document.getElementById('product-name').textContent = product.name;
+            document.getElementById('product-price').textContent = `A partir de R$ ${product.price}`;
+            document.getElementById('product-description').textContent = product.description;
+            document.getElementById('product-image').src = product.image;
+            document.getElementById('product-image').alt = product.name;
+            document.getElementById('add-to-cart').onclick = () => addToCart(product.name, product.price);
+        } else {
+            document.getElementById('product-name').textContent = 'Produto não encontrado';
+            document.getElementById('product-price').textContent = '';
+            document.getElementById('product-description').textContent = 'Desculpe, o produto solicitado não está disponível.';
+            document.getElementById('add-to-cart').style.display = 'none';
+        }
+
+        // Lógica do carrinho
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            const cartCount = document.getElementById('cart-count');
+            cartItems.innerHTML = '';
+            let total = 0;
+
+            cart.forEach(item => {
+                total += item.price;
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'flex justify-between';
+                itemDiv.innerHTML = `<span>${item.name}</span><span>R$ ${item.price}</span>`;
+                cartItems.appendChild(itemDiv);
+            });
+
+            cartTotal.textContent = `Total: R$ ${total}`;
+            cartCount.textContent = cart.length;
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCart();
+            toggleCart();
+        }
+
+        function toggleCart() {
+            const cartSidebar = document.getElementById('cart-sidebar');
+            cartSidebar.classList.toggle('translate-x-full');
+        }
+
+        updateCart();
+    </script>
+</body>
+</html>
