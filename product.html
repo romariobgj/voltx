@@ -81,4 +81,233 @@
                 <h3 class="text-lg font-bold mb-2">Customer Support</h3>
                 <ul class="space-y-1">
                     <li><a href="faq.html" class="text-[#457b9d] hover:text-blue-600 transition">FAQ</a></li>
-                    <li><a href="contact.html" class="text
+                    <li><a href="contact.html" class="text-[#457b9d] hover:text-blue-600 transition">Contact</a></li>
+                    <li><a href="returns.html" class="text-[#457b9d] hover:text-blue-600 transition">Returns & Refunds</a></li>
+                </ul>
+            </div>
+            <img src="https://www.thesslstore.com/content/images/digiCert-basic-seal-new.svg" alt="DigiCert SSL Seal" class="mx-auto h-10 mb-2">
+            <p class="text-gray-400 text-sm">© 2025 VoltX. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Product data
+        const products = [
+            {
+                id: 'angry-vajra-slider',
+                name: 'Angry Vajra Slider',
+                price: '$43',
+                description: '<strong>Shipping & Returns Policy</strong><br>- Free shipping on orders over $50. Delivery typically takes 5-7 business days.<br>- We offer a 30-day return policy for unused items.<br>- If your product arrives damaged or defective, please contact us within 7 days for a free replacement.<br>- In case of non-delivery, we will investigate and issue a full refund within 14 days.<br><br><strong>Care Instructions</strong><br>- Handle with care to avoid scratches or dents.<br>- Clean with a soft, dry cloth; avoid harsh chemicals.<br>- Store in a cool, dry place to maintain quality.<br>- Avoid dropping to prevent damage to internal mechanisms.',
+                images: ['https://www.jzedc.com/cdn/shop/files/4f006bee3549bd1b1a2d5673c0468547.jpg?v=1742137573&width=823']
+            },
+            {
+                id: 'aurora',
+                name: 'Aurora',
+                price: '$137',
+                description: '<strong>Shipping & Returns Policy</strong><br>- Free shipping on orders over $50. Delivery typically takes 5-7 business days.<br>- We offer a 30-day return policy for unused items.<br>- If your product arrives damaged or defective, please contact us within 7 days for a free replacement.<br>- In case of non-delivery, we will investigate and issue a full refund within 14 days.<br><br><strong>Care Instructions</strong><br>- Handle with care to avoid scratches or dents.<br>- Clean with a soft, dry cloth; avoid harsh chemicals.<br>- Store in a cool, dry place to maintain quality.<br>- Avoid dropping to prevent damage to internal mechanisms.',
+                images: ['https://www.jzedc.com/cdn/shop/files/272e2e3095bc200a793b97ffaa5d0bcc.jpg?v=1744731490&width=823']
+            },
+            {
+                id: 'bad-tempered',
+                name: 'Bad-tempered',
+                price: '$107',
+                description: '<strong>Shipping & Returns Policy</strong><br>- Free shipping on orders over $50. Delivery typically takes 5-7 business days.<br>- We offer a 30-day return policy for unused items.<br>- If your product arrives damaged or defective, please contact us within 7 days for a free replacement.<br>- In case of non-delivery, we will investigate and issue a full refund within 14 days.<br><br><strong>Care Instructions</strong><br>- Handle with care to avoid scratches or dents.<br>- Clean with a soft, dry cloth; avoid harsh chemicals.<br>- Store in a cool, dry place to maintain quality.<br>- Avoid dropping to prevent damage to internal mechanisms.',
+                images: ['https://www.jzedc.com/cdn/shop/files/013def6a524a39c192040a7d6bcc1da7.jpg?v=1740841066&width=823']
+            },
+            {
+                id: 'black-and-white-cat',
+                name: 'Black & White Cat',
+                price: '$47',
+                description: '<strong>Shipping & Returns Policy</strong><br>- Free shipping on orders over $50. Delivery typically takes 5-7 business days.<br>- We offer a 30-day return policy for unused items.<br>- If your product arrives damaged or defective, please contact us within 7 days for a free replacement.<br>- In case of non-delivery, we will investigate and issue a full refund within 14 days.<br><br><strong>Care Instructions</strong><br>- Handle with care to avoid scratches or dents.<br>- Clean with a soft, dry cloth; avoid harsh chemicals.<br>- Store in a cool, dry place to maintain quality.<br>- Avoid dropping to prevent damage to internal mechanisms.',
+                images: ['https://www.jzedc.com/cdn/shop/files/8968aa508170e152490a9b56a3585e3d.jpg?v=1746805892&width=823']
+            },
+            {
+                id: 'brilliant',
+                name: 'Brilliant',
+                price: '$59',
+                description: '<strong>Shipping & Returns Policy</strong><br>- Free shipping on orders over $50. Delivery typically takes 5-7 business days.<br>- We offer a 30-day return policy for unused items.<br>- If your product arrives damaged or defective, please contact us within 7 days for a free replacement.<br>- In case of non-delivery, we will investigate and issue a full refund within 14 days.<br><br><strong>Care Instructions</strong><br>- Handle with care to avoid scratches or dents.<br>- Clean with a soft, dry cloth; avoid harsh chemicals.<br>- Store in a cool, dry place to maintain quality.<br>- Avoid dropping to prevent damage to internal mechanisms.',
+                images: ['https://www.jzedc.com/cdn/shop/files/940c309316d4a95b03ea7673e932ce11.jpg?v=1748108122&width=823']
+            },
+            {
+                id: 'candy',
+                name: 'Candy',
+                price: '$28',
+                description: '<strong>Shipping & Returns Policy</strong><br>- Free shipping on orders over $50. Delivery typically takes 5-7 business days.<br>- We offer a 30-day return policy for unused items.<br>- If your product arrives damaged or defective, please contact us within 7 days for a free replacement.<br>- In case of non-delivery, we will investigate and issue a full refund within 14 days.<br><br><strong>Care Instructions</strong><br>- Handle with care to avoid scratches or dents.<br>- Clean with a soft, dry cloth; avoid harsh chemicals.<br>- Store in a cool, dry place to maintain quality.<br>- Avoid dropping to prevent damage to internal mechanisms.',
+                images: ['https://www.jzedc.com/cdn/shop/files/5357e3fcd7973900850a1916b0374988.jpg?v=1745765203&width=823']
+            },
+            {
+                id: 'colorful-cat',
+                name: 'Colorful Cat',
+                price: '$83',
+                description: '<strong>Shipping & Returns Policy</strong><br>- Free shipping on orders over $50. Delivery typically takes 5-7 business days.<br>- We offer a 30-day return policy for unused items.<br>- If your product arrives damaged or defective, please contact us within 7 days for a free replacement.<br>- In case of non-delivery, we will investigate and issue a full refund within 14 days.<br><br><strong>Care Instructions</strong><br>- Handle with care to avoid scratches or dents.<br>- Clean with a soft, dry cloth; avoid harsh chemicals.<br>- Store in a cool, dry place to maintain quality.<br>- Avoid dropping to prevent damage to internal mechanisms.',
+                images: ['https://www.jzedc.com/cdn/shop/files/4b5afc47ee66daa1966527aad6508cd8.jpg?v=1746796770&width=823']
+            },
+            {
+                id: 'cookie',
+                name: 'Cookie',
+                price: '$23',
+                description: '<strong>Shipping & Returns Policy</strong><br>- Free shipping on orders over $50. Delivery typically takes 5-7 business days.<br>- We offer a 30-day return policy for unused items.<br>- If your product arrives damaged or defective, please contact us within 7 days for a free replacement.<br>- In case of non-delivery, we will investigate and issue a full refund within 14 days.<br><br><strong>Care Instructions</strong><br>- Handle with care to avoid scratches or dents.<br>- Clean with a soft, dry cloth; avoid harsh chemicals.<br>- Store in a cool, dry place to maintain quality.<br>- Avoid dropping to prevent damage to internal mechanisms.',
+                images: ['https://www.jzedc.com/cdn/shop/files/57c81be3bd68ddcb5f18d8195f3244b6.jpg?v=1732611156&width=823']
+            },
+            {
+                id: 'devil-hop',
+                name: 'Devil Hop',
+                price: '$65',
+                description: '<strong>Shipping & Returns Policy</strong><br>- Free shipping on orders over $50. Delivery typically takes 5-7 business days.<br>- We offer a 30-day return policy for unused items.<br>- If your product arrives damaged or defective, please contact us within 7 days for a free replacement.<br>- In case of non-delivery, we will investigate and issue a full refund within 14 days.<br><br><strong>Care Instructions</strong><br>- Handle with care to avoid scratches or dents.<br>- Clean with a soft, dry cloth; avoid harsh chemicals.<br>- Store in a cool, dry place to maintain quality.<br>- Avoid dropping to prevent damage to internal mechanisms.',
+                images: ['https://www.jzedc.com/cdn/shop/files/61a8813fb719455635e8433020f7fca5.jpg?v=1743858145&width=823']
+            },
+            {
+                id: 'devilfish',
+                name: 'Devilfish',
+                price: '$53',
+                description: '<strong>Shipping & Returns Policy</strong><br>- Free shipping on orders over $50. Delivery typically takes 5-7 business days.<br>- We offer a 30-day return policy for unused items.<br>- If your product arrives damaged or defective, please contact us within 7 days for a free replacement.<br>- In case of non-delivery, we will investigate and issue a full refund within 14 days.<br><br><strong>Care Instructions</strong><br>- Handle with care to avoid scratches or dents.<br>- Clean with a soft, dry cloth; avoid harsh chemicals.<br>- Store in a cool, dry place to maintain quality.<br>- Avoid dropping to prevent damage to internal mechanisms.',
+                images: ['https://www.jzedc.com/cdn/shop/files/f4a5ec32f733d1301f263ba13c0f5ca7.jpg?v=1749120387&width=823']
+            },
+            {
+                id: 'dragon',
+                name: 'Dragon',
+                price: '$16',
+                description: '<strong>Shipping & Returns Policy</strong><br>- Free shipping on orders over $50. Delivery typically takes 5-7 business days.<br>- We offer a 30-day return policy for unused items.<br>- If your product arrives damaged or defective, please contact us within 7 days for a free replacement.<br>- In case of non-delivery, we will investigate and issue a full refund within 14 days.<br><br><strong>Care Instructions</strong><br>- Handle with care to avoid scratches or dents.<br>- Clean with a soft, dry cloth; avoid harsh chemicals.<br>- Store in a cool, dry place to maintain quality.<br>- Avoid dropping to prevent damage to internal mechanisms.',
+                images: ['https://www.jzedc.com/cdn/shop/files/836cfeda40adbd62f37b46e6fb233a23.jpg?v=1734527263&width=823']
+            },
+            {
+                id: 'dual-whee',
+                name: 'Dual-Whee',
+                price: '$81',
+                description: '<strong>Shipping & Returns Policy</strong><br>- Free shipping on orders over $50. Delivery typically takes 5-7 business days.<br>- We offer a 30-day return policy for unused items.<br>- If your product arrives damaged or defective, please contact us within 7 days for a free replacement.<br>- In case of non-delivery, we will investigate and issue a full refund within 14 days.<br><br><strong>Care Instructions</strong><br>- Handle with care to avoid scratches or dents.<br>- Clean with a soft, dry cloth; avoid harsh chemicals.<br>- Store in a cool, dry place to maintain quality.<br>- Avoid dropping to prevent damage to internal mechanisms.',
+                images: ['https://www.jzedc.com/cdn/shop/files/fdc0d4ccdaffe43a91987b094b90e67e.jpg?v=1750867852&width=823']
+            },
+            {
+                id: 'eating-beans',
+                name: 'Eating Beans',
+                price: '$71',
+                description: '<strong>Shipping & Returns Policy</strong><br>- Free shipping on orders over $50. Delivery typically takes 5-7 business days.<br>- We offer a 30-day return policy for unused items.<br>- If your product arrives damaged or defective, please contact us within 7 days for a free replacement.<br>- In case of non-delivery, we will investigate and issue a full refund within 14 days.<br><br><strong>Care Instructions</strong><br>- Handle with care to avoid scratches or dents.<br>- Clean with a soft, dry cloth; avoid harsh chemicals.<br>- Store in a cool, dry place to maintain quality.<br>- Avoid dropping to prevent damage to internal mechanisms.',
+                images: ['https://www.jzedc.com/cdn/shop/files/c5b6967f8bd14d167acdc8c3a8636df0.png?v=1733651627&width=823']
+            },
+            {
+                id: 'eye-of-power',
+                name: 'Eye of Power',
+                price: '$12',
+                description: '<strong>Shipping & Returns Policy</strong><br>- Free shipping on orders over $50. Delivery typically takes 5-7 business days.<br>- We offer a 30-day return policy for unused items.<br>- If your product arrives damaged or defective, please contact us within 7 days for a free replacement.<br>- In case of non-delivery, we will investigate and issue a full refund within 14 days.<br><br><strong>Care Instructions</strong><br>- Handle with care to avoid scratches or dents.<br>- Clean with a soft, dry cloth; avoid harsh chemicals.<br>- Store in a cool, dry place to maintain quality.<br>- Avoid dropping to prevent damage to internal mechanisms.',
+                images: ['https://www.jzedc.com/cdn/shop/files/13718c82f1b9887761675d3b5681fe97.png?v=1733852095&width=823']
+            },
+            {
+                id: 'fatboy-war-spinner',
+                name: 'Fatboy War Spinner',
+                price: '$137',
+                description: '<strong>Shipping & Returns Policy</strong><br>- Free shipping on orders over $50. Delivery typically takes 5-7 business days.<br>- We offer a 30-day return policy for unused items.<br>- If your product arrives damaged or defective, please contact us within 7 days for a free replacement.<br>- In case of non-delivery, we will investigate and issue a full refund within 14 days.<br><br><strong>Care Instructions</strong><br>- Handle with care to avoid scratches or dents.<br>- Clean with a soft, dry cloth; avoid harsh chemicals.<br>- Store in a cool, dry place to maintain quality.<br>- Avoid dropping to prevent damage to internal mechanisms.',
+                images: ['https://www.jzedc.com/cdn/shop/files/8b347f07de4e7f5c54651616997233bf.jpg?v=1742916827&width=823']
+            },
+            {
+                id: 'ghost',
+                name: 'Ghost',
+                price: '$101',
+                description: '<strong>Shipping & Returns Policy</strong><br>- Free shipping on orders over $50. Delivery typically takes 5-7 business days.<br>- We offer a 30-day return policy for unused items.<br>- If your product arrives damaged or defective, please contact us within 7 days for a free replacement.<br>- In case of non-delivery, we will investigate and issue a full refund within 14 days.<br><br><strong>Care Instructions</strong><br>- Handle with care to avoid scratches or dents.<br>- Clean with a soft, dry cloth; avoid harsh chemicals.<br>- Store in a cool, dry place to maintain quality.<br>- Avoid dropping to prevent damage to internal mechanisms.',
+                images: ['https://www.jzedc.com/cdn/shop/files/4db3a1638bfade36df12dfd98730820c.jpg?v=1732611112&width=823']
+            }
+        ];
+
+        // Get product ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+        const product = products.find(p => p.id === productId);
+
+        // Image carousel
+        let currentImageIndex = 0;
+        let startX = 0;
+        let isDragging = false;
+        const productImage = document.getElementById('product-image');
+        const dotsContainer = document.getElementById('image-dots');
+        const carousel = document.querySelector('.carousel');
+
+        function updateProductImage() {
+            if (product && product.images.length > 0) {
+                productImage.classList.add('slide');
+                setTimeout(() => {
+                    productImage.src = product.images[currentImageIndex];
+                    productImage.alt = product.name;
+                    productImage.classList.remove('slide');
+                    productImage.classList.add('slide-in');
+                    updateDots();
+                }, 500);
+            }
+        }
+
+        function updateDots() {
+            dotsContainer.innerHTML = '';
+            product.images.forEach((_, index) => {
+                const dot = document.createElement('span');
+                dot.className = 'dot' + (index === currentImageIndex ? ' active' : '');
+                dot.onclick = () => {
+                    currentImageIndex = index;
+                    updateProductImage();
+                };
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function showNextImage() {
+            if (product && product.images.length > 0) {
+                currentImageIndex = (currentImageIndex + 1) % product.images.length;
+                updateProductImage();
+            }
+        }
+
+        function showPrevImage() {
+            if (product && product.images.length > 0) {
+                currentImageIndex = (currentImageIndex - 1 + product.images.length) % product.images.length;
+                updateProductImage();
+            }
+        }
+
+        // Swipe and drag functionality with animation
+        carousel.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+            carousel.classList.add('dragging');
+        });
+
+        carousel.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            const currentX = e.touches[0].clientX;
+            const diffX = currentX - startX;
+            productImage.style.transform = `translateX(${diffX}px)`;
+        });
+
+        carousel.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            const endX = e.changedTouches[0].clientX;
+            const swipeDistance = endX - startX;
+            carousel.classList.remove('dragging');
+            productImage.style.transform = 'translateX(0)';
+            if (swipeDistance > 50) {
+                showPrevImage();
+            } else if (swipeDistance < -50) {
+                showNextImage();
+            }
+            isDragging = false;
+        });
+
+        // Update page with product details
+        if (product) {
+            document.getElementById('product-name').textContent = product.name;
+            document.getElementById('product-price').textContent = product.price;
+            document.getElementById('product-description').innerHTML = product.description; // Usando innerHTML para suportar tags HTML
+            updateProductImage();
+
+            // Hide dots if only one image
+            if (product.images.length <= 1) {
+                dotsContainer.style.display = 'none';
+            } else {
+                updateDots();
+            }
+        } else {
+            document.getElementById('product-name').textContent = 'Product Not Found';
+            document.getElementById('product-price').textContent = '';
+            document.getElementById('product-description').textContent = 'Sorry, the requested product is not available.';
+            document.getElementById('add-to-cart').style.display = 'none';
+            dotsContainer.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
