@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produto - iPhonePro</title>
+    <title>Product - VoltX</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -28,24 +28,18 @@
             cursor: pointer;
         }
         .dot.active {
-            background-color: #28a745;
+            background-color: #e63946;
         }
     </style>
 </head>
-<body class="bg-gray-50 font-inter">
+<body class="font-inter bg-white">
     <!-- Header -->
-    <header class="fixed top-0 w-full bg-white shadow-md z-50">
+    <header class="fixed top-0 w-full bg-[#1a1a1a] text-white shadow-md z-50">
         <div class="container mx-auto px-4 py-4 flex items-center justify-between">
-            <a href="index.html" class="text-2xl font-bold text-gray-900">iPhonePro</a>
-            <div class="w-1/3">
-                <input type="text" placeholder="Buscar iPhone..." class="w-full px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
-            </div>
+            <a href="index.html" class="text-2xl font-bold">VoltX</a>
             <div class="flex items-center space-x-4">
-                <span class="text-gray-700 cursor-pointer">👤 Login</span>
-                <div class="relative cursor-pointer" onclick="toggleCart()">
-                    <span class="text-2xl">🛒</span>
-                    <span id="cart-count" class="absolute -top-2 -right-2 bg-green-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
-                </div>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
             </div>
         </div>
     </header>
@@ -55,120 +49,107 @@
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div class="relative">
-                    <img id="product-image" src="https://via.placeholder.com/500x500" alt="iPhone" class="w-full rounded-lg shadow-lg object-cover">
-                    <button id="prev-image" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-green-600 text-white p-3 rounded-full hover:bg-green-700 transition shadow-md">←</button>
-                    <button id="next-image" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-green-600 text-white p-3 rounded-full hover:bg-green-700 transition shadow-md">→</button>
+                    <img id="product-image" src="https://via.placeholder.com/500x500" alt="Fidget Toy" class="w-full rounded-lg shadow-lg object-cover">
+                    <button id="prev-image" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-red-500 text-white p-3 rounded-full hover:bg-red-600 transition shadow-md">←</button>
+                    <button id="next-image" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-red-500 text-white p-3 rounded-full hover:bg-red-600 transition shadow-md">→</button>
                     <div id="image-dots" class="flex justify-center mt-4"></div>
                 </div>
                 <div class="flex flex-col justify-center">
-                    <h1 id="product-name" class="text-4xl font-bold text-gray-900 mb-4">Carregando...</h1>
-                    <p id="product-price" class="text-4xl font-bold text-green-600 mb-6 bg-white p-3 rounded-lg shadow-md">Carregando...</p>
-                    <button id="add-to-cart" class="bg-yellow-400 text-gray-900 px-10 py-4 rounded-lg hover:bg-yellow-500 transition font-semibold text-lg shadow-lg mb-6">Comprar</button>
-                    <p id="product-description" class="text-gray-600 text-lg leading-relaxed">Carregando...</p>
+                    <h1 id="product-name" class="text-4xl font-bold text-gray-900 mb-4">Loading...</h1>
+                    <p id="product-price" class="text-4xl font-bold text-red-500 mb-6">Loading...</p>
+                    <a href="https://checkout.vegaspay.app" id="add-to-cart" class="bg-red-500 text-white px-10 py-4 rounded-lg hover:bg-red-600 transition font-semibold text-lg shadow-lg mb-6">Buy Now</a>
+                    <p id="product-description" class="text-gray-600 text-lg leading-relaxed">Loading...</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Cart Sidebar -->
-    <div id="cart-sidebar" class="fixed top-0 right-0 w-full md:w-96 h-full bg-white shadow-xl transform translate-x-full transition-transform duration-300">
-        <div class="p-6">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-2xl font-bold">Carrinho</h2>
-                <button onclick="toggleCart()" class="text-gray-600 hover:text-gray-900">Fechar</button>
-            </div>
-            <div id="cart-items" class="space-y-4"></div>
-            <p id="cart-total" class="text-lg font-semibold mt-6">Total: R$ 0</p>
-            <a href="https://checkout.vegaspay.app" class="block mt-4 bg-green-600 text-white text-center px-6 py-3 rounded-lg hover:bg-green-700 transition">Continuar</a>
-        </div>
-    </div>
-
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
+    <footer class="bg-[#1a1a1a] text-white py-12">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Sobre a loja</h3>
-                    <p>Somos a iPhonePro, sua loja de confiança para iPhones no Brasil. Entrega rápida e qualidade garantida!</p>
+                    <h3 class="text-lg font-semibold mb-4">About VoltX</h3>
+                    <p>We are VoltX, your go-to store for premium fidget toys and EDC gadgets. Fast delivery and top quality guaranteed!</p>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Ajuda ao cliente</h3>
+                    <h3 class="text-lg font-semibold mb-4">Customer Support</h3>
                     <ul class="space-y-2">
-                        <li><a href="faq.html" class="hover:text-yellow-400">FAQ</a></li>
-                        <li><a href="contato.html" class="hover:text-yellow-400">Contato</a></li>
-                        <li><a href="trocas.html" class="hover:text-yellow-400">Trocas e Devoluções</a></li>
+                        <li><a href="faq.html" class="hover:text-[#457b9d]">FAQ</a></li>
+                        <li><a href="contact.html" class="hover:text-[#457b9d]">Contact</a></li>
+                        <li><a href="returns.html" class="hover:text-[#457b9d]">Returns & Refunds</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Redes sociais</h3>
+                    <h3 class="text-lg font-semibold mb-4">Social Media</h3>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-yellow-400 hover:text-yellow-500">Instagram</a>
-                        <a href="#" class="text-yellow-400 hover:text-yellow-500">Facebook</a>
+                        <a href="#" class="text-[#457b9d] hover:text-blue-600">Instagram</a>
+                        <a href="#" class="text-[#457b9d] hover:text-blue-600">Facebook</a>
                     </div>
                 </div>
             </div>
             <div class="mt-8 text-center">
-                <p>© 2025 iPhonePro. Todos os direitos reservados – Brasil 🇧🇷</p>
+                <p>© 2025 VoltX. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Dados dos produtos
+        // Product data
         const products = [
             {
-                id: 'iphone-14-pro-max',
-                name: 'iPhone 14 Pro Max',
-                price: 8499,
-                description: 'O iPhone 14 Pro Max oferece desempenho incomparável com o chip A16 Bionic, tela Super Retina XDR de 6,7 polegadas e um sistema de câmeras avançado com sensor de 48 MP. Perfeito para quem busca o melhor da tecnologia.',
+                id: 'bad-tempered-08',
+                name: 'Bad-Tempered 08',
+                price: 59.99,
+                description: 'The Bad-Tempered 08 is a premium fidget spinner with a pry function, crafted from aerospace-grade stainless steel. Enjoy smooth spins and satisfying clicks, with armor plates that flip outward for a unique experience. Perfect for stress relief and focus enhancement.',
                 images: [
                     'https://dcdn-us.mitiendanube.com/stores/003/635/363/products/7a2e25a39680c01f6595d1065ffec832-94e8f82d41db9702e417083860174690-1024-1024.webp',
                     'https://dcdn-us.mitiendanube.com/stores/003/635/363/products/7a2e25a39680c01f6595d1065ffec832-94e8f82d41db9702e417083860174690-1024-1024.webp'
                 ]
             },
             {
-                id: 'iphone-14',
-                name: 'iPhone 14',
-                price: 6999,
-                description: 'O iPhone 14 combina design elegante com o chip A15 Bionic, tela OLED de 6,1 polegadas e câmeras duplas de 12 MP. Ideal para quem quer desempenho e estilo.',
-                images: ['https://via.placeholder.com/500x500?text=iPhone+14']
+                id: 'quantum-slider',
+                name: 'Quantum Slider',
+                price: 49.99,
+                description: 'The Quantum Slider is a precision-engineered EDC toy made from stainless steel. Slide it along its track for satisfying haptic feedback and stress relief. Compact and durable, it’s perfect for on-the-go fidgeting.',
+                images: ['https://via.placeholder.com/500x500?text=Quantum+Slider']
             },
             {
-                id: 'iphone-13-pro',
-                name: 'iPhone 13 Pro',
-                price: 6499,
-                description: 'O iPhone 13 Pro traz o chip A15 Bionic, tela ProMotion de 6,1 polegadas e um sistema de câmeras Pro com modo cinematográfico. Excelente para criadores de conteúdo.',
-                images: ['https://via.placeholder.com/500x500?text=iPhone+13+Pro']
+                id: 'orbit-spinner',
+                name: 'Orbit Spinner',
+                price: 39.99,
+                description: 'The Orbit Spinner offers smooth, long-lasting spins with a sleek design. Crafted from aerospace-grade stainless steel, it’s ideal for focus and relaxation with a soothing hum.',
+                images: ['https://via.placeholder.com/500x500?text=Orbit+Spinner']
             },
             {
-                id: 'iphone-13',
-                name: 'iPhone 13',
-                price: 5499,
-                description: 'O iPhone 13 oferece o chip A15 Bionic, tela Super Retina XDR de 6,1 polegadas e câmeras duplas com modo noturno. Perfeito para o dia a dia.',
-                images: ['https://via.placeholder.com/500x500?text=iPhone+13']
+                id: 'push-card-pro',
+                name: 'Push Card Pro',
+                price: 29.99,
+                description: 'The Push Card Pro is a compact stress-relief tool with satisfying clicks and smooth pushes. Made from high-quality materials, it’s perfect for keeping your hands busy.',
+                images: ['https://via.placeholder.com/500x500?text=Push+Card+Pro']
             },
             {
-                id: 'iphone-12',
-                name: 'iPhone 12',
-                price: 4499,
-                description: 'O iPhone 12 tem chip A14 Bionic, tela OLED de 6,1 polegadas e suporte a 5G. Um equilíbrio perfeito entre preço e performance.',
-                images: ['https://via.placeholder.com/500x500?text=iPhone+12']
+                id: 'magnetic-cube',
+                name: 'Magnetic Cube',
+                price: 34.99,
+                description: 'The Magnetic Cube combines tactile feedback with magnetic clicks for a unique fidgeting experience. Its premium stainless steel build ensures durability and portability.',
+                images: ['https://via.placeholder.com/500x500?text=Magnetic+Cube']
             },
             {
-                id: 'iphone-11',
-                name: 'iPhone 11',
-                price: 3499,
-                description: 'O iPhone 11 conta com chip A13 Bionic, tela Liquid Retina de 6,1 polegadas e câmeras duplas. Ótima escolha para quem busca custo-benefício.',
-                images: ['https://via.placeholder.com/500x500?text=iPhone+11']
+                id: 'precision-fidget',
+                name: 'Precision Fidget',
+                price: 44.99,
+                description: 'The Precision Fidget is a versatile EDC toy with multiple spinning and sliding functions. Crafted for focus and stress relief, it’s a must-have for fidget enthusiasts.',
+                images: ['https://via.placeholder.com/500x500?text=Precision+Fidget']
             }
         ];
 
-        // Obter o ID do produto da URL
+        // Get product ID from URL
         const urlParams = new URLSearchParams(window.location.search);
         const productId = urlParams.get('id');
         const product = products.find(p => p.id === productId);
 
-        // Carrossel de imagens
+        // Image carousel
         let currentImageIndex = 0;
         const productImage = document.getElementById('product-image');
         const dotsContainer = document.getElementById('image-dots');
@@ -213,19 +194,18 @@
             }
         }
 
-        // Atualizar a página com os detalhes do produto
+        // Update page with product details
         if (product) {
             document.getElementById('product-name').textContent = product.name;
-            document.getElementById('product-price').textContent = `R$ ${product.price.toLocaleString('pt-BR')}`;
+            document.getElementById('product-price').textContent = `$${product.price.toFixed(2)}`;
             document.getElementById('product-description').textContent = product.description;
             updateProductImage();
-            document.getElementById('add-to-cart').onclick = () => addToCart(product.name, product.price);
 
-            // Adicionar eventos aos botões de navegação
+            // Add events to navigation buttons
             document.getElementById('next-image').onclick = showNextImage;
             document.getElementById('prev-image').onclick = showPrevImage;
 
-            // Esconder botões e dots se houver apenas uma imagem
+            // Hide buttons and dots if only one image
             if (product.images.length <= 1) {
                 document.getElementById('next-image').style.display = 'none';
                 document.getElementById('prev-image').style.display = 'none';
@@ -234,50 +214,14 @@
                 updateDots();
             }
         } else {
-            document.getElementById('product-name').textContent = 'Produto não encontrado';
+            document.getElementById('product-name').textContent = 'Product Not Found';
             document.getElementById('product-price').textContent = '';
-            document.getElementById('product-description').textContent = 'Desculpe, o produto solicitado não está disponível.';
+            document.getElementById('product-description').textContent = 'Sorry, the requested product is not available.';
             document.getElementById('add-to-cart').style.display = 'none';
             document.getElementById('next-image').style.display = 'none';
             document.getElementById('prev-image').style.display = 'none';
             dotsContainer.style.display = 'none';
         }
-
-        // Lógica do carrinho
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-        function updateCart() {
-            const cartItems = document.getElementById('cart-items');
-            const cartTotal = document.getElementById('cart-total');
-            const cartCount = document.getElementById('cart-count');
-            cartItems.innerHTML = '';
-            let total = 0;
-
-            cart.forEach(item => {
-                total += item.price;
-                const itemDiv = document.createElement('div');
-                itemDiv.className = 'flex justify-between';
-                itemDiv.innerHTML = `<span>${item.name}</span><span>R$ ${item.price.toLocaleString('pt-BR')}</span>`;
-                cartItems.appendChild(itemDiv);
-            });
-
-            cartTotal.textContent = `Total: R$ ${total.toLocaleString('pt-BR')}`;
-            cartCount.textContent = cart.length;
-            localStorage.setItem('cart', JSON.stringify(cart));
-        }
-
-        function addToCart(name, price) {
-            cart.push({ name, price });
-            updateCart();
-            toggleCart();
-        }
-
-        function toggleCart() {
-            const cartSidebar = document.getElementById('cart-sidebar');
-            cartSidebar.classList.toggle('translate-x-full');
-        }
-
-        updateCart();
     </script>
 </body>
 </html>
