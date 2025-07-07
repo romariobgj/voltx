@@ -25,6 +25,17 @@
         .text-accent:hover {
             color: #2563eb;
         }
+        .banner {
+            width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: cover;
+        }
+        @media (max-width: 768px) {
+            .banner {
+                max-height: 150px;
+            }
+        }
     </style>
 </head>
 <body class="font-inter">
@@ -43,8 +54,13 @@
         </div>
     </header>
 
+    <!-- Banner Section -->
+    <div class="w-full mt-16">
+        <img src="https://i.ibb.co/rKYyJbPg/Chat-GPT-Image-7-de-jul-de-2025-03-20-26.png" alt="Banner" class="banner w-full">
+    </div>
+
     <!-- Products Section -->
-    <section id="products" class="mt-20 py-16">
+    <section id="products" class="mt-8 py-16">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12">Our Premium Fidget Toys</h2>
             <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 gap-8">
