@@ -223,9 +223,8 @@
             const productGrid = document.getElementById('product-grid');
             const showMoreButton = document.getElementById('show-more');
             const filterButtons = document.querySelectorAll('.filter-btn');
-            const productCards = productGrid.getElementsByTagName('a');
             let visibleCount = 9; // Inicialmente mostra 9 produtos
-            let allProducts = Array.from(productCards); // Copia os cards para manipulação
+            let allProducts = Array.from(productGrid.getElementsByTagName('a')); // Copia os cards para manipulação
 
             // Função para reordenar e exibir produtos com base no filtro
             function filterProducts(filterType) {
@@ -268,9 +267,15 @@
 
                 // Reiniciar a exibição
                 allProducts = Array.from(productGrid.getElementsByTagName('a'));
-                for (let i = visibleCount; i < allProducts.length; i++) {
-                    allProducts[i].style.display = 'none';
+                visibleCount = Math.min(9, allProducts.length); // Reinicia para 9 ou o total se menor
+                for (let i = 0; i < allProducts.length; i++) {
+                    allProducts[i].style.display = i < visibleCount ? 'block' : 'none';
                 }
+
+                // Reiniciar o estado do Show More
+                showMoreButton.disabled = false;
+                showMoreButton.style.opacity = '1';
+                showMoreButton.style.cursor = 'pointer';
             }
 
             // Ocultar produtos excedentes inicialmente
@@ -280,28 +285,30 @@
 
             showMoreButton.addEventListener('click', () => {
                 const nextBatch = visibleCount + 9; // Carrega mais 9 produtos
-                for (let i = visibleCount; i < Math.min(nextBatch, productCards.length); i++) {
-                    if (productCards[i]) {
-                        productCards[i].style.display = 'block';
+                for (let i = visibleCount; i < Math.min(nextBatch, allProducts.length); i++) {
+                    if (allProducts[i]) {
+                        allProducts[i].style.display = 'block';
                     }
                 }
                 visibleCount = nextBatch;
 
                 // Desativar botão se não houver mais produtos para mostrar
-                if (visibleCount >= productCards.length) {
+                if (visibleCount >= allProducts.length) {
                     showMoreButton.disabled = true;
                     showMoreButton.style.opacity = '0.5';
                     showMoreButton.style.cursor = 'not-allowed';
                 }
             });
 
-            // Aplicar filtro inicial (Most Popular)
+            // Aplicar evento de clique nos botões de filtro
             filterButtons.forEach(button => {
                 button.addEventListener('click', (event) => {
                     const filterType = event.target.getAttribute('onclick').match(/filterProducts\('(.+)'\)/)[1];
                     filterProducts(filterType);
                 });
             });
+
+            // Aplicar filtro inicial (Most Popular)
             filterProducts('most-popular');
         });
     </script>
