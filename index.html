@@ -232,7 +232,7 @@
                 // Remover classe 'active' de todos os botões
                 filterButtons.forEach(btn => btn.classList.remove('active'));
                 // Adicionar classe 'active' ao botão clicado
-                event.target.classList.add('active');
+                document.querySelector(`.filter-btn[onclick="filterProducts('${filterType}')"]`).classList.add('active');
 
                 // Reordenar os cards com base no filtro
                 let sortedProducts = [...allProducts];
@@ -267,7 +267,7 @@
                 sortedProducts.forEach(card => productGrid.appendChild(card));
 
                 // Reiniciar a exibição
-                allProducts = Array.from(productCards);
+                allProducts = Array.from(productGrid.getElementsByTagName('a'));
                 for (let i = visibleCount; i < allProducts.length; i++) {
                     allProducts[i].style.display = 'none';
                 }
@@ -296,6 +296,12 @@
             });
 
             // Aplicar filtro inicial (Most Popular)
+            filterButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const filterType = event.target.getAttribute('onclick').match(/filterProducts\('(.+)'\)/)[1];
+                    filterProducts(filterType);
+                });
+            });
             filterProducts('most-popular');
         });
     </script>
