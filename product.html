@@ -68,7 +68,7 @@
                     <h1 id="product-name" class="text-4xl font-sans font-bold text-black mb-2">Loading...</h1>
                     <p id="product-price" class="text-lg font-sans text-[#666] mb-6">Loading...</p>
                     <a href="https://checkout.vegaspay.app" id="add-to-cart" class="bg-[#2e7d32] text-white px-6 py-2 rounded-md shadow-sm hover:bg-[#1b5e20] transition font-semibold text-base inline-flex items-center justify-center">Buy Now</a>
-                    <p id="product-description" class="text-base text-black leading-relaxed mt-4">Loading...</p>
+                    <p id="product-description" class="text-base font-sans text-black leading-normal mt-4"><strong>Shipping & Returns Policy</strong><br>- Free shipping on orders over $50. Delivery typically takes 5-7 business days.<br>- We offer a 30-day return policy for unused items.<br>- If your product arrives damaged or defective, please contact us within 7 days for a free replacement.<br>- In case of non-delivery, we will investigate and issue a full refund within 14 days.</p>
                 </div>
             </div>
         </div>
@@ -97,7 +97,7 @@
                 id: 'angry-vajra-edc-slider',
                 name: 'Angry Vajra EDC Slider',
                 price: '$39.00',
-                description: 'The Angry Vajra EDC Slider is a precision-crafted fidget toy made from aerospace-grade stainless steel. Enjoy smooth sliding action and satisfying tactile feedback, perfect for stress relief and focus enhancement.',
+                description: '<strong>Shipping & Returns Policy</strong><br>- Free shipping on orders over $50. Delivery typically takes 5-7 business days.<br>- We offer a 30-day return policy for unused items.<br>- If your product arrives damaged or defective, please contact us within 7 days for a free replacement.<br>- In case of non-delivery, we will investigate and issue a full refund within 14 days.',
                 images: [
                     'https://www.jzedc.com/cdn/shop/files/4f006bee3549bd1b1a2d5673c0468547.jpg',
                     'https://www.jzedc.com/cdn/shop/files/aa4d9daf535d2901e543b6b70aa04c06.jpg'
@@ -107,35 +107,35 @@
                 id: 'quantum-slider',
                 name: 'Quantum Slider',
                 price: '$49.99',
-                description: 'The Quantum Slider is a precision-engineered EDC toy made from stainless steel. Slide it along its track for satisfying haptic feedback and stress relief. Compact and durable, it’s perfect for on-the-go fidgeting.',
+                description: '<strong>Shipping & Returns Policy</strong><br>- Free shipping on orders over $50. Delivery typically takes 5-7 business days.<br>- We offer a 30-day return policy for unused items.<br>- If your product arrives damaged or defective, please contact us within 7 days for a free replacement.<br>- In case of non-delivery, we will investigate and issue a full refund within 14 days.',
                 images: ['https://via.placeholder.com/500x500?text=Quantum+Slider']
             },
             {
                 id: 'orbit-spinner',
                 name: 'Orbit Spinner',
                 price: '$39.99',
-                description: 'The Orbit Spinner offers smooth, long-lasting spins with a sleek design. Crafted from aerospace-grade stainless steel, it’s ideal for focus and relaxation with a soothing hum.',
+                description: '<strong>Shipping & Returns Policy</strong><br>- Free shipping on orders over $50. Delivery typically takes 5-7 business days.<br>- We offer a 30-day return policy for unused items.<br>- If your product arrives damaged or defective, please contact us within 7 days for a free replacement.<br>- In case of non-delivery, we will investigate and issue a full refund within 14 days.',
                 images: ['https://via.placeholder.com/500x500?text=Orbit+Spinner']
             },
             {
                 id: 'push-card-pro',
                 name: 'Push Card Pro',
                 price: '$29.99',
-                description: 'The Push Card Pro is a compact stress-relief tool with satisfying clicks and smooth pushes. Made from high-quality materials, it’s perfect for keeping your hands busy.',
+                description: '<strong>Shipping & Returns Policy</strong><br>- Free shipping on orders over $50. Delivery typically takes 5-7 business days.<br>- We offer a 30-day return policy for unused items.<br>- If your product arrives damaged or defective, please contact us within 7 days for a free replacement.<br>- In case of non-delivery, we will investigate and issue a full refund within 14 days.',
                 images: ['https://via.placeholder.com/500x500?text=Push+Card+Pro']
             },
             {
                 id: 'magnetic-cube',
                 name: 'Magnetic Cube',
                 price: '$34.99',
-                description: 'The Magnetic Cube combines tactile feedback with magnetic clicks for a unique fidgeting experience. Its premium stainless steel build ensures durability and portability.',
+                description: '<strong>Shipping & Returns Policy</strong><br>- Free shipping on orders over $50. Delivery typically takes 5-7 business days.<br>- We offer a 30-day return policy for unused items.<br>- If your product arrives damaged or defective, please contact us within 7 days for a free replacement.<br>- In case of non-delivery, we will investigate and issue a full refund within 14 days.',
                 images: ['https://via.placeholder.com/500x500?text=Magnetic+Cube']
             },
             {
                 id: 'precision-fidget',
                 name: 'Precision Fidget',
                 price: '$44.99',
-                description: 'The Precision Fidget is a versatile EDC toy with multiple spinning and sliding functions. Crafted for focus and stress relief, it’s a must-have for fidget enthusiasts.',
+                description: '<strong>Shipping & Returns Policy</strong><br>- Free shipping on orders over $50. Delivery typically takes 5-7 business days.<br>- We offer a 30-day return policy for unused items.<br>- If your product arrives damaged or defective, please contact us within 7 days for a free replacement.<br>- In case of non-delivery, we will investigate and issue a full refund within 14 days.',
                 images: ['https://via.placeholder.com/500x500?text=Precision+Fidget']
             }
         ];
@@ -225,7 +225,7 @@
         if (product) {
             document.getElementById('product-name').textContent = product.name;
             document.getElementById('product-price').textContent = product.price;
-            document.getElementById('product-description').textContent = product.description;
+            document.getElementById('product-description').innerHTML = product.description; // Usando innerHTML para suportar tags HTML
             updateProductImage();
 
             // Hide dots if only one image
