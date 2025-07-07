@@ -30,6 +30,11 @@
         .dot.active {
             background-color: #e63946;
         }
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            touch-action: pan-y;
+        }
     </style>
 </head>
 <body class="font-inter bg-white">
@@ -38,8 +43,12 @@
         <div class="container mx-auto px-4 py-4 flex items-center justify-between">
             <a href="index.html" class="text-2xl font-bold">VoltX</a>
             <div class="flex items-center space-x-4">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                <a href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                </a>
+                <a href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                </a>
             </div>
         </div>
     </header>
@@ -48,10 +57,8 @@
     <section class="mt-20 py-16">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="relative">
+                <div class="carousel">
                     <img id="product-image" src="https://via.placeholder.com/500x500" alt="Fidget Toy" class="w-full rounded-lg shadow-lg object-cover">
-                    <button id="prev-image" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-red-500 text-white p-3 rounded-full hover:bg-red-600 transition shadow-md">←</button>
-                    <button id="next-image" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-red-500 text-white p-3 rounded-full hover:bg-red-600 transition shadow-md">→</button>
                     <div id="image-dots" class="flex justify-center mt-4"></div>
                 </div>
                 <div class="flex flex-col justify-center">
@@ -67,7 +74,7 @@
     <!-- Footer -->
     <footer class="bg-[#1a1a1a] text-white py-12">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                     <h3 class="text-lg font-semibold mb-4">About VoltX</h3>
                     <p>We are VoltX, your go-to store for premium fidget toys and EDC gadgets. Fast delivery and top quality guaranteed!</p>
@@ -80,15 +87,9 @@
                         <li><a href="returns.html" class="hover:text-[#457b9d]">Returns & Refunds</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Social Media</h3>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-[#457b9d] hover:text-blue-600">Instagram</a>
-                        <a href="#" class="text-[#457b9d] hover:text-blue-600">Facebook</a>
-                    </div>
-                </div>
             </div>
             <div class="mt-8 text-center">
+                <img src="https://www.thesslstore.com/content/images/digiCert-basic-seal-new.svg" alt="DigiCert SSL Seal" class="mx-auto h-12 mb-4">
                 <p>© 2025 VoltX. All rights reserved.</p>
             </div>
         </div>
@@ -153,6 +154,7 @@
         let currentImageIndex = 0;
         const productImage = document.getElementById('product-image');
         const dotsContainer = document.getElementById('image-dots');
+        const carousel = document.querySelector('.carousel');
 
         function updateProductImage() {
             if (product && product.images.length > 0) {
@@ -194,6 +196,24 @@
             }
         }
 
+        // Swipe functionality
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        carousel.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        carousel.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            const swipeDistance = touchEndX - touchStartX;
+            if (swipeDistance > 50) {
+                showPrevImage();
+            } else if (swipeDistance < -50) {
+                showNextImage();
+            }
+        });
+
         // Update page with product details
         if (product) {
             document.getElementById('product-name').textContent = product.name;
@@ -201,14 +221,8 @@
             document.getElementById('product-description').textContent = product.description;
             updateProductImage();
 
-            // Add events to navigation buttons
-            document.getElementById('next-image').onclick = showNextImage;
-            document.getElementById('prev-image').onclick = showPrevImage;
-
-            // Hide buttons and dots if only one image
+            // Hide dots if only one image
             if (product.images.length <= 1) {
-                document.getElementById('next-image').style.display = 'none';
-                document.getElementById('prev-image').style.display = 'none';
                 dotsContainer.style.display = 'none';
             } else {
                 updateDots();
@@ -218,8 +232,6 @@
             document.getElementById('product-price').textContent = '';
             document.getElementById('product-description').textContent = 'Sorry, the requested product is not available.';
             document.getElementById('add-to-cart').style.display = 'none';
-            document.getElementById('next-image').style.display = 'none';
-            document.getElementById('prev-image').style.display = 'none';
             dotsContainer.style.display = 'none';
         }
     </script>
