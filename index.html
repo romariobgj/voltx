@@ -25,6 +25,22 @@
         .text-accent:hover {
             color: #2563eb;
         }
+        .filter-btn {
+            background-color: #f1f5f9;
+            color: #1a1a1a;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .filter-btn:hover {
+            background-color: #e0e7ff;
+        }
+        .filter-btn.active {
+            background-color: #bfdbfe;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body class="font-inter">
@@ -47,6 +63,11 @@
     <section id="products" class="mt-20 py-16">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12">Our Premium Fidget Toys</h2>
+            <div class="flex justify-center mb-4 space-x-2">
+                <button class="filter-btn active" onclick="filterProducts('most-popular')">Most Popular</button>
+                <button class="filter-btn" onclick="filterProducts('cheapest')">Cheapest</button>
+                <button class="filter-btn" onclick="filterProducts('random')">Random</button>
+            </div>
             <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 gap-8">
                 <!-- Product Card: Angry Vajra Slider -->
                 <a href="product.html?id=angry-vajra-slider" class="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition">
@@ -201,8 +222,56 @@
         document.addEventListener('DOMContentLoaded', () => {
             const productGrid = document.getElementById('product-grid');
             const showMoreButton = document.getElementById('show-more');
+            const filterButtons = document.querySelectorAll('.filter-btn');
             const productCards = productGrid.getElementsByTagName('a');
             let visibleCount = 9; // Inicialmente mostra 9 produtos
+            let allProducts = Array.from(productCards); // Copia os cards para manipulação
+
+            // Função para reordenar e exibir produtos com base no filtro
+            function filterProducts(filterType) {
+                // Remover classe 'active' de todos os botões
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Adicionar classe 'active' ao botão clicado
+                event.target.classList.add('active');
+
+                // Reordenar os cards com base no filtro
+                let sortedProducts = [...allProducts];
+                if (filterType === 'cheapest') {
+                    sortedProducts.sort((a, b) => {
+                        const priceA = parseFloat(a.querySelector('p').textContent.replace('$', ''));
+                        const priceB = parseFloat(b.querySelector('p').textContent.replace('$', ''));
+                        return priceA - priceB;
+                    });
+                    // Exibir os 3 mais baratos, depois os 3 mais caros, e o resto aleatório
+                    const cheapestThree = sortedProducts.slice(0, 3);
+                    const mostExpensiveThree = sortedProducts.slice(-3).reverse();
+                    const middleRandom = sortedProducts.slice(3, -3).sort(() => Math.random() - 0.5);
+                    sortedProducts = [...cheapestThree, ...mostExpensiveThree, ...middleRandom];
+                } else if (filterType === 'most-popular') {
+                    // Simula os 3 primeiros como "mais populares", depois os 3 mais caros, e o resto aleatório
+                    const topThree = sortedProducts.slice(0, 3);
+                    sortedProducts.sort((a, b) => {
+                        const priceA = parseFloat(a.querySelector('p').textContent.replace('$', ''));
+                        const priceB = parseFloat(b.querySelector('p').textContent.replace('$', ''));
+                        return priceB - priceA;
+                    });
+                    const mostExpensiveThree = sortedProducts.slice(0, 3);
+                    const remainingRandom = sortedProducts.slice(3).sort(() => Math.random() - 0.5);
+                    sortedProducts = [...topThree, ...mostExpensiveThree, ...remainingRandom];
+                } else if (filterType === 'random') {
+                    sortedProducts.sort(() => Math.random() - 0.5);
+                }
+
+                // Reorganizar os cards no DOM
+                productGrid.innerHTML = '';
+                sortedProducts.forEach(card => productGrid.appendChild(card));
+
+                // Reiniciar a exibição
+                allProducts = Array.from(productCards);
+                for (let i = visibleCount; i < allProducts.length; i++) {
+                    allProducts[i].style.display = 'none';
+                }
+            }
 
             // Ocultar produtos excedentes inicialmente
             for (let i = visibleCount; i < productCards.length; i++) {
@@ -225,6 +294,9 @@
                     showMoreButton.style.cursor = 'not-allowed';
                 }
             });
+
+            // Aplicar filtro inicial (Most Popular)
+            filterProducts('most-popular');
         });
     </script>
 </body>
