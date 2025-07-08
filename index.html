@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17323309015"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-17323309015');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VoltX - Premium Fidget Toys</title>
@@ -42,33 +51,27 @@
         .text-accent:hover {
             color: #2563eb;
         }
-        .banner {
-            position: absolute;
-            top: 64px; /* Ajuste para ficar logo após o header (16px padding + 48px altura aproximada) */
-            left: 0;
-            width: 100%;
-            height: 200px; /* Altura fixa para desktop */
-            z-index: -1;
-            object-fit: cover;
-        }
         #products {
             position: relative;
-            z-index: 1;
-            margin-top: 200px; /* Ajuste para evitar sobreposição com o banner */
-        }
-        @media (max-width: 768px) {
-            .banner {
-                height: 100px; /* Altura reduzida para mobile */
-            }
-            #products {
-                margin-top: 100px; /* Ajuste para mobile */
-            }
+            z-index: 10;
         }
     </style>
 </head>
 <body class="font-inter">
+    <!-- Free Shipping Banner -->
+    <div id="free-shipping-banner" class="fixed top-0 w-full bg-red-600 text-white text-center py-2.5 z-50 shadow-md">
+        <div class="container mx-auto px-4 flex items-center justify-center space-x-2">
+            <span class="text-sm md:text-base">📦 Free Shipping on Orders Over $30! <a href="#" class="hover:underline">Learn More</a></span>
+            <button id="close-banner" class="ml-4 text-white hover:text-gray-200 focus:outline-none">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
     <!-- Header -->
-    <header class="fixed top-0 w-full text-white shadow-md z-50">
+    <header class="fixed top-[40px] w-full text-white shadow-md z-40">
         <div class="container mx-auto px-4 py-4 flex items-center justify-between">
             <a href="index.html" class="text-2xl font-bold">VoltX</a>
             <div class="flex items-center space-x-4">
@@ -82,19 +85,15 @@
         </div>
     </header>
 
-    <!-- Banner Section -->
-    <img src="https://i.ibb.co/rKYyJbPg/Chat-GPT-Image-7-de-jul-de-2025-03-20-26.png" alt="Banner" class="banner">
-
     <!-- Products Section -->
-    <section id="products" class="py-16">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">The fun starts in 3, 2, 1...</h2>
-            <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 gap-8">
+    <section id="products" class="py-8 md:py-12 mt-24 md:mt-16 lg:mt-20">
+        <div class="container mx-auto px-4 max-w-screen-xl">
+            <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
                 <!-- Product Card: JZEDC Mechanical Princess -->
                 <a href="product.html?id=jzedc-mechanical-princess" class="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition" onclick="fbq('trackCustom', 'ProductClick', {product_id: 'jzedc-mechanical-princess'})">
                     <img src="https://www.jzedc.com/cdn/shop/files/f3483ba27c1630450ed14709c33dec02.jpg?v=1740495479&width=823" alt="JZEDC Mechanical Princess" class="w-full h-48 object-cover">
                     <div class="p-2">
-                        <h3 class="text-base text-gray-600 pl-0">JZEDC Mechanical Princess</h3>
+                        <h3 class="text-base text-gray-600 pl-0">Mechanical Princess</h3>
                         <p class="text-gray-700 mt-1 pl-0 font-semibold">$18</p>
                     </div>
                 </a>
@@ -183,6 +182,7 @@
                     <img src="https://www.jzedc.com/cdn/shop/files/836cfeda40adbd62f37b46e6fb233a23.jpg?v=1734527263&width=823" alt="Dragon" class="w-full h-48 object-cover">
                     <div class="p-2">
                         <h3 class="text-base text-gray-600 pl-0">Dragon</h3>
+                        <p class="text-gray-ទ0-1"></path>
                         <p class="text-gray-700 mt-1 pl-0 font-semibold">$5</p>
                     </div>
                 </a>
@@ -347,7 +347,39 @@
                     </div>
                 </a>
             </div>
-            <button id="show-more" class="btn-primary w-full py-2 mt-4" onclick="fbq('trackCustom', 'ShowMoreClick')">Show More</button>
+            <button id="show-more" class="btn-primary w-full py-2 mt-6 md:mt-8" onclick="fbq('trackCustom', 'ShowMoreClick')">Show More</button>
+        </div>
+    </section>
+
+    <!-- Trust Guarantees Section -->
+    <section class="py-12 md:py-16 bg-gray-50">
+        <div class="container mx-auto px-4 max-w-screen-xl">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <!-- Secure Checkout -->
+                <div class="flex flex-col items-center">
+                    <svg class="w-12 h-12 text-red-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                    </svg>
+                    <h3 class="text-lg font-bold mb-2">Secure Checkout</h3>
+                    <p class="text-gray-500 text-sm">Shop with confidence using our encrypted payment system.</p>
+                </div>
+                <!-- Fast Shipping -->
+                <div class="flex flex-col items-center">
+                    <svg class="w-12 h-12 text-red-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <h3 class="text-lg font-bold mb-2">Fast Shipping</h3>
+                    <p class="text-gray-500 text-sm">Get your order delivered quickly and reliably.</p>
+                </div>
+                <!-- 30-Day Returns -->
+                <div class="flex flex-col items-center">
+                    <svg class="w-12 h-12 text-red-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path>
+                    </svg>
+                    <h3 class="text-lg font-bold mb-2">30-Day Returns</h3>
+                    <p class="text-gray-500 text-sm">Hassle-free returns within 30 days of purchase.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -412,6 +444,15 @@
                 } else {
                     fbq('trackCustom', 'PageHidden');
                 }
+            });
+
+            // Fechar banner de frete grátis
+            const closeBannerButton = document.getElementById('close-banner');
+            const freeShippingBanner = document.getElementById('free-shipping-banner');
+            closeBannerButton.addEventListener('click', () => {
+                freeShippingBanner.style.display = 'none';
+                document.querySelector('header').classList.remove('top-[40px]');
+                document.querySelector('header').classList.add('top-0');
             });
         });
     </script>
